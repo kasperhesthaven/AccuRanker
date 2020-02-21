@@ -6,6 +6,7 @@ stages:
 
 test:
   stage: test
+  allow_failure: false
   script:
     - cd AccuRanker.Tests
     - dotnet restore
@@ -14,6 +15,8 @@ test:
 deploy:
   stage: deploy
   when: manual
+  only:
+    - master
   script:
     - cd AccuRanker
     - export VERSION=$(grep -oP '(?<=<Version>).*(?=</Version>)' AccuRanker.csproj)
