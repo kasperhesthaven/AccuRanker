@@ -6,14 +6,14 @@
     <Authors>Frederik Baun Hansen, Kasper Hesthaven</Authors>
     <Product>Adobe Analytics API</Product>
     <Description>This package wraps the AccuRanker API making it easier to use.</Description>
-    <PackageProjectUrl>https://gitlab.com/dentsu-data-lab/accuranker</PackageProjectUrl>
-    <RepositoryUrl>https://gitlab.com/dentsu-data-lab/accuranker</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Dentsudatalab/AccuRanker</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Dentsudatalab/AccuRanker</RepositoryUrl>
     <PackageTags>accuranker dentsu</PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Company>Dentsu Data Lab</Company>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.1</Version>
+    <Version>1.0.3</Version>
     <RootNamespace>DentsuDataLab.AccuRanker</RootNamespace>
   </PropertyGroup>
 
