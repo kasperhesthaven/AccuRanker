@@ -1,0 +1,40 @@
+version: 2
+updates:
+  # Enable version updates for GitHub actions
+  - package-ecosystem: "github-actions"
+    directory: "/" # `/` checks in `.github/workflows`
+    schedule:
+      interval: "weekly"
+    labels:
+      - "Type: Maintenance"
+    commit-message:
+      prefix: "CI"
+      include: "scope"
+    reviewers: 
+      - "kasperhesthaven"
+
+  # Enable version updates for NuGet
+  - package-ecosystem: "nuget"
+    directory: "/AccuRanker/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "Type: Maintenance"
+    commit-message:
+      prefix: "CI"
+      include: "scope"
+    reviewers: 
+      - "kasperhesthaven"
+
+  # Enable version updates for NuGet
+  - package-ecosystem: "nuget"
+    directory: "/AccuRanker.Tests/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "Type: Maintenance"
+    commit-message:
+      prefix: "CI"
+      include: "scope"
+    reviewers: 
+      - "kasperhesthaven"
