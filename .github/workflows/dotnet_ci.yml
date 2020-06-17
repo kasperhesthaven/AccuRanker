@@ -1,5 +1,4 @@
 name: .NET 2.2 CI
-
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]

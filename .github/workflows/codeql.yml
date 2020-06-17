@@ -1,13 +1,12 @@
-name: "CodeQL"
-
+name: CodeQL
 on:
   pull_request:
     branches:
       - master
-  if: "contains(github.event.head_commit.message, 'CI: Run CodeQL')"
 
 jobs:
   analyze:
+    if: "contains(github.event.head_commit.message, 'CI: Run CodeQL')"
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
