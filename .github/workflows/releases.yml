@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "v*"
+
+name: Create Release
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.2.0
+
+      - name: Create Release
+        uses: actions/create-release@v1.1.1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
