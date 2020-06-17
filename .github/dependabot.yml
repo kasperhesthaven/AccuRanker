@@ -1,6 +1,5 @@
 version: 2
 updates:
-  # Enable version updates for GitHub actions
   - package-ecosystem: "github-actions"
     directory: "/" # `/` checks in `.github/workflows`
     schedule:
@@ -10,10 +9,9 @@ updates:
     commit-message:
       prefix: "CI"
       include: "scope"
-    reviewers: 
+    reviewers:
       - "kasperhesthaven"
 
-  # Enable version updates for NuGet
   - package-ecosystem: "nuget"
     directory: "/AccuRanker/"
     schedule:
@@ -23,10 +21,9 @@ updates:
     commit-message:
       prefix: "CI"
       include: "scope"
-    reviewers: 
+    reviewers:
       - "kasperhesthaven"
 
-  # Enable version updates for NuGet
   - package-ecosystem: "nuget"
     directory: "/AccuRanker.Tests/"
     schedule:
@@ -36,5 +33,5 @@ updates:
     commit-message:
       prefix: "CI"
       include: "scope"
-    reviewers: 
+    reviewers:
       - "kasperhesthaven"
