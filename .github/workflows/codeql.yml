@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - master
+  if: "contains(github.event.head_commit.message, 'CI: Run CodeQL')"
 
 jobs:
   analyze:
