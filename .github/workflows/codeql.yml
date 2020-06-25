@@ -6,7 +6,7 @@ on:
 
 jobs:
   analyze:
-    if: "contains(github.event.head_commit.message, 'CI: Run CodeQL')"
+    if: "contains(github.event.head_commit.message, 'CI: Run CodeQL')" # Temporary block while awaiting beta access
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
