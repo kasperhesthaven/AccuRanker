@@ -1,0 +1,36 @@
+name: ReSharper linting
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository # Ensure the PR isn't from a fork, as it isn't supported.
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.3.1
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup ReSharper CLT
+        uses: kasperhesthaven/setup-resharper-clt@1.0.0
+
+      - name: Run Code Cleanup
+        run: cleanupcode.sh AccuRanker.sln --profile="Linting"
+
+      - name: Check for changes
+        id: git-changes
+        run: echo ::set-output name=changes::$(if ! git diff-files --no-ext-diff --quiet --; then echo "true"; fi)
+
+      - name: Push any changes
+        if: steps.git-changes.outputs.changes == 'true'
+        run: |
+          echo ${{ steps.git-changes.outputs.modified }}
+          git config user.name ${{ github.actor }}
+          git config user.email '${{ github.actor }}@users.noreply.github.com'
+          git commit -am "style: Applied R# Rider linting"
+          git push
