@@ -1,7 +1,6 @@
 name: .NET 2.2 CI
 on:
   pull_request:
-    types: [opened, synchronize, reopened, closed]
     branches:
       - master
 
@@ -13,7 +12,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true || github.event.action != 'closed'
     defaults:
       run:
         working-directory: AccuRanker.Tests
@@ -27,8 +25,7 @@ jobs:
         uses: actions/cache@v2.0.0
         with:
           path: ~/.nuget/packages # Mac/Linux
-          key: ${{ github.workflow }}-${{ hashFiles('*/*.csproj') }}
-          restore-keys: ${{ github.workflow }}-
+          key: ${{ hashFiles('*/*.csproj') }}
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.5.0
@@ -37,43 +34,3 @@ jobs:
 
       - name: Run tests
         run: dotnet test --verbosity normal
-
-  build:
-    name: Build & push
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
-    defaults:
-      run:
-        working-directory: AccuRanker
-    timeout-minutes: 3
-    needs: test
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2.3.1
-
-      - name: Cache
-        uses: actions/cache@v2.0.0
-        with:
-          path: ~/.nuget/packages # Mac/Linux
-          key: ${{ github.workflow }}-${{ hashFiles('*/*.csproj') }}
-          restore-keys: ${{ github.workflow }}-
-
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1.5.0
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
-        with:
-          dotnet-version: 2.2.x
-
-      - name: Get version number & set as env
-        run: echo '::set-env name=VERSION::$(grep -oP "(?<=<Version>).*(?=</Version>)" AccuRanker.csproj)'
-
-      - name: Build project
-        run: dotnet build --configuration Release
-
-      - name: Pack project
-        run: dotnet pack --configuration Release --no-restore
-
-      - name: Push NuGet package
-        run: dotnet nuget push bin/Release/DentsuDataLab.AccuRanker.${{ env.VERSION }}.nupkg
