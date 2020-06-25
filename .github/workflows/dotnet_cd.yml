@@ -56,8 +56,6 @@ jobs:
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.5.0
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
         with:
           dotnet-version: 2.2.x
           source-url: https://api.nuget.org/v3/index.json
@@ -69,4 +67,4 @@ jobs:
         run: dotnet pack --configuration Release -p:PackageVersion=$VERSION
 
       - name: Push NuGet package
-        run: dotnet nuget push bin/Release/DentsuDataLab.AccuRanker.$VERSION.nupkg
+        run: dotnet nuget push bin/Release/DentsuDataLab.AccuRanker.$VERSION.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }}
