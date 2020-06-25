@@ -60,6 +60,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
         with:
           dotnet-version: 2.2.x
+          source-url: https://api.nuget.org/v3/index.json
 
       - name: Get version number & set as env
         run: echo ::set-env name=VERSION::$( echo ${{ github.event.release.tag_name }} | cut -c 2- )
