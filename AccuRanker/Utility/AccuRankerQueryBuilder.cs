@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+
     using Fields;
 
     internal class AccuRankerQueryBuilder
@@ -70,12 +71,14 @@
                 query["fields"] = fieldString;
             }
 
+
             // Date range
             if (_from.HasValue && _to.HasValue)
             {
                 query["period_from"] = _from.Value.ToString("yyyy-MM-dd");
                 query["period_to"] = _to.Value.ToString("yyyy-MM-dd");
             }
+
 
             if (_limit > 0)
                 query["limit"] = _limit.ToString();

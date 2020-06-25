@@ -2,7 +2,9 @@
 {
     using System;
     using System.Threading.Tasks;
+
     using Newtonsoft.Json;
+
     using Utility;
     using Utility.Auth;
     using Utility.Http;
@@ -23,7 +25,8 @@
         /// <returns>A bool representing the logged in state.</returns>
         public virtual bool IsClientLoggedIn(string token)
         {
-            return _clientStore.Client != null && _clientStore.Client.ExpiresAt > DateTime.Now && _clientStore.Client.RefreshToken == token;
+            return _clientStore.Client != null && _clientStore.Client.ExpiresAt > DateTime.Now &&
+                   _clientStore.Client.RefreshToken == token;
         }
 
         /// <summary>
@@ -38,6 +41,7 @@
                 throw new InvalidOperationException(nameof(IsClientLoggedIn));
 
             var serializedClient = JsonConvert.SerializeObject(_clientStore.Client);
+
             return JsonConvert.DeserializeObject<IdentityClient>(serializedClient);
         }
 
@@ -52,7 +56,6 @@
                 var clientInfo = await GetClientInfo(authValues);
 
                 if (clientInfo.HasValue)
-                {
                     _clientStore.Client = new IdentityClient
                     {
                         AccessToken = clientInfo.Value.AccessToken,
@@ -61,8 +64,8 @@
                         RefreshToken = clientInfo.Value.RefreshToken,
                         Scope = clientInfo.Value.Scope
                     };
-                }
             }
+
 
             return _clientStore.Client;
         }
@@ -76,6 +79,5 @@
 
             return clientResponse;
         }
-
     }
 }

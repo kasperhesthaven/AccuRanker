@@ -1,7 +1,9 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Domains
 {
     using System;
+
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class Domain

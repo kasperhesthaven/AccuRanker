@@ -1,7 +1,9 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Domains
 {
     using Accounts;
+
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class Group

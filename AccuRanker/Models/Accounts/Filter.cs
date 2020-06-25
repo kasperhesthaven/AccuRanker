@@ -1,6 +1,7 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Accounts
 {
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class Filter

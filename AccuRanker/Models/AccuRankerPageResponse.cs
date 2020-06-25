@@ -1,6 +1,7 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models
 {
     using System.Collections.Generic;
+
     using Newtonsoft.Json;
 
     public class AccuRankerPageResponse<T>

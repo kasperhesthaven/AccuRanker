@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+
     using Newtonsoft.Json;
 
     public class FieldsDescriptor
@@ -51,7 +52,8 @@
                     continue;
 
                 // Get JSON Attribute value
-                var jsonProp = matchingProperty.GetCustomAttribute(typeof(JsonPropertyAttribute)) as JsonPropertyAttribute;
+                var jsonProp =
+                    matchingProperty.GetCustomAttribute(typeof(JsonPropertyAttribute)) as JsonPropertyAttribute;
                 var jsonPropName = jsonProp?.PropertyName;
 
                 var field = MakeField(jsonPropName);
@@ -75,10 +77,13 @@
                 var properties = type.GetProperties();
 
                 var fieldProperties = properties.Where(e => fieldType.IsAssignableFrom(e.PropertyType));
-                var fieldDescriptorProperties = properties.Where(e => fieldDescriptorType.IsAssignableFrom(e.PropertyType)).ToList();
+                var fieldDescriptorProperties = properties
+                    .Where(e => fieldDescriptorType.IsAssignableFrom(e.PropertyType))
+                    .ToList();
 
                 var fieldValues = fieldProperties.Select(e => e.GetValue(this) as Field);
-                var fieldDescriptorValues = fieldDescriptorProperties.SelectMany(e => ((FieldsDescriptor)e.GetValue(this)).All);
+                var fieldDescriptorValues =
+                    fieldDescriptorProperties.SelectMany(e => ((FieldsDescriptor)e.GetValue(this)).All);
 
                 var fields = fieldValues
                     .Concat(fieldDescriptorValues);
@@ -94,6 +99,7 @@
                 if (field.Name == value)
                     return field;
             }
+
 
             return null;
         }
@@ -115,7 +121,8 @@
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
+
             return Equals((FieldsDescriptor)obj);
         }
 
@@ -123,7 +130,11 @@
         {
             unchecked
             {
-                return ((_parent != null ? _parent.GetHashCode() : 0) * 397) ^ (_name != null ? _name.GetHashCode() : 0);
+                return ((_parent != null
+                    ? _parent.GetHashCode()
+                    : 0) * 397) ^ (_name != null
+                    ? _name.GetHashCode()
+                    : 0);
             }
         }
 

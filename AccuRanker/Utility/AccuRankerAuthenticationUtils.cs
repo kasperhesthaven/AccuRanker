@@ -5,8 +5,11 @@
     using System.Net.Http;
     using System.Threading.Tasks;
     using System.Web;
+
     using Auth;
+
     using Extensions;
+
     using Http;
 
     public static class AccuRankerAuthenticationUtils
@@ -35,14 +38,15 @@
             var client = new HttpClient();
 
             var uriValues = new Dictionary<string, string>
-                {
-                    {"grant_type", "authorization_code"},
-                    {"code", authValues.Code},
-                    {"client_id", authValues.ClientId},
-                    {"redirect_uri", authValues.RedirectUri},
-                };
+            {
+                {"grant_type", "authorization_code"},
+                {"code", authValues.Code},
+                {"client_id", authValues.ClientId},
+                {"redirect_uri", authValues.RedirectUri}
+            };
 
             var result = await client.PostFormResponse<IdentityClient>(AccuRankerCodeAuthBaseUrl, uriValues);
+
             return result;
         }
 
@@ -50,13 +54,14 @@
         {
             var client = new HttpClient();
             var requestParams = new Dictionary<string, string>
-                {
-                    { "client_id", authValues.ClientId },
-                    { "refresh_token", authValues.RefreshToken },
-                    { "grant_type", "refresh_token" }
-                };
+            {
+                {"client_id", authValues.ClientId},
+                {"refresh_token", authValues.RefreshToken},
+                {"grant_type", "refresh_token"}
+            };
 
             var result = await client.PostFormResponse<IdentityClient>(AccuRankerCodeAuthBaseUrl, requestParams);
+
             return result;
         }
     }

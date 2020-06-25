@@ -3,16 +3,22 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+
     using Authorization;
+
     using Extensions;
+
     using Models.Accounts;
+
     using Utility;
     using Utility.Fields;
     using Utility.Http;
 
     public class AccountService : BaseAccuRankerService
     {
-        public AccountService(HttpClient httpClient, AccuRankerAuthorizationService authService) : base(httpClient, authService)
+        public AccountService(HttpClient httpClient, AccuRankerAuthorizationService authService) : base(
+            httpClient,
+            authService)
         {
         }
 

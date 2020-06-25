@@ -31,5 +31,4 @@
         [JsonProperty("exp")]
         public int ExpiresAt { get; set; }
     }
-
 }
