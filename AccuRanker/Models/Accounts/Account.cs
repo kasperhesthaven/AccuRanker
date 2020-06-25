@@ -1,7 +1,9 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Accounts
 {
     using System.Collections.Generic;
+
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class Account

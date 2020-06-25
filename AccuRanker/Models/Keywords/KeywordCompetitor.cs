@@ -1,7 +1,9 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Keywords
 {
     using Domains;
+
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class KeywordCompetitor

@@ -1,6 +1,7 @@
 ﻿namespace DentsuDataLab.AccuRanker.Extensions
 {
     using Microsoft.Extensions.DependencyInjection;
+
     using Services.Authorization;
     using Services.Endpoints;
 

@@ -1,8 +1,11 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Keywords
 {
     using System;
+
     using LandingPages;
+
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class Rank

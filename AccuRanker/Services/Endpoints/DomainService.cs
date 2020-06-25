@@ -3,16 +3,22 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+
     using Authorization;
+
     using Extensions;
+
     using Models.Domains;
+
     using Utility;
     using Utility.Fields;
     using Utility.Http;
 
     public class DomainService : BaseAccuRankerService
     {
-        public DomainService(HttpClient httpClient, AccuRankerAuthorizationService authService) : base(httpClient, authService)
+        public DomainService(HttpClient httpClient, AccuRankerAuthorizationService authService) : base(
+            httpClient,
+            authService)
         {
         }
 

@@ -37,7 +37,8 @@
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
+
             return Equals((Field)obj);
         }
 
@@ -45,7 +46,11 @@
         {
             unchecked
             {
-                return ((_name != null ? _name.GetHashCode() : 0) * 397) ^ (_parent != null ? _parent.GetHashCode() : 0);
+                return ((_name != null
+                    ? _name.GetHashCode()
+                    : 0) * 397) ^ (_parent != null
+                    ? _parent.GetHashCode()
+                    : 0);
             }
         }
 

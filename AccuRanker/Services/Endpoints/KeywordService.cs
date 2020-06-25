@@ -4,29 +4,46 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+
     using Authorization;
+
     using Models.Domains;
     using Models.Keywords;
+
     using Utility;
     using Utility.Fields;
 
     public class KeywordService : BaseAccuRankerService
     {
-        public KeywordService(HttpClient httpClient, AccuRankerAuthorizationService authService) : base(httpClient, authService)
+        public KeywordService(HttpClient httpClient, AccuRankerAuthorizationService authService) : base(
+            httpClient,
+            authService)
         {
         }
 
-        public async Task<IEnumerable<Keyword>> GetKeywords(Domain domain, DateTime from, DateTime to, params Field[] fields)
+        public async Task<IEnumerable<Keyword>> GetKeywords(
+            Domain domain,
+            DateTime from,
+            DateTime to,
+            params Field[] fields)
         {
             return await GetKeywords(domain, from, to, (IEnumerable<Field>)fields);
         }
 
-        public async Task<IEnumerable<Keyword>> GetKeywords(Domain domain, DateTime from, DateTime to, IEnumerable<Field> fields)
+        public async Task<IEnumerable<Keyword>> GetKeywords(
+            Domain domain,
+            DateTime from,
+            DateTime to,
+            IEnumerable<Field> fields)
         {
             return await GetKeywords(domain.Id, from, to, fields);
         }
 
-        public virtual async Task<IEnumerable<Keyword>> GetKeywords(long domainId, DateTime from, DateTime to, IEnumerable<Field> fields)
+        public virtual async Task<IEnumerable<Keyword>> GetKeywords(
+            long domainId,
+            DateTime from,
+            DateTime to,
+            IEnumerable<Field> fields)
         {
             await AuthorizeClient(AuthValues);
 

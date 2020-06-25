@@ -1,6 +1,7 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Keywords
 {
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class SerpFeatures

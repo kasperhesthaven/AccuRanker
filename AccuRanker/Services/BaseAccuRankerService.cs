@@ -4,9 +4,13 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
+
     using Authorization;
+
     using Extensions;
+
     using Models;
+
     using Utility;
     using Utility.Auth;
     using Utility.Http;
@@ -38,7 +42,8 @@
         {
             var client = await AuthService.AuthorizeClient(authValues);
 
-            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", client.AccessToken);
+            HttpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", client.AccessToken);
         }
 
         internal virtual async Task<IEnumerable<T>> GetAllPages<T>(AccuRankerQueryBuilder baseQuery, int pageSize = 500)
@@ -47,6 +52,7 @@
             var allObjects = new List<T>();
 
             ApiResponse<AccuRankerPageResponse<T>> response;
+
             do
             {
                 var endpoint = baseQuery
@@ -64,6 +70,7 @@
 
                 offset += pageSize;
             } while (!string.IsNullOrEmpty(response.Value.NextPage));
+
 
             return allObjects;
         }

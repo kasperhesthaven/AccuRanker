@@ -1,6 +1,7 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.LandingPages
 {
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class LandingPageHistory

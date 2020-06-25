@@ -1,6 +1,7 @@
 ﻿namespace DentsuDataLab.AccuRanker.Models.Domains
 {
     using Newtonsoft.Json;
+
     using Utility.Fields;
 
     public class Competitor
