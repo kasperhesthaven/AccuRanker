@@ -3,6 +3,8 @@ on:
   pull_request:
     branches:
       - master
+    paths: 
+      - '**.cs'
 
 jobs:
   lint:
@@ -24,12 +26,11 @@ jobs:
 
       - name: Check for changes
         id: git-changes
-        run: echo ::set-output name=changes::$(if ! git diff-files --no-ext-diff --quiet --; then echo "true"; fi)
+        run: echo ::set-output name=changes::$(if git diff --quiet && git diff --staged --quiet; then echo "false; else echo "true"; fi)
 
       - name: Push any changes
         if: steps.git-changes.outputs.changes == 'true'
         run: |
-          echo ${{ steps.git-changes.outputs.modified }}
           git config user.name ${{ github.actor }}
           git config user.email '${{ github.actor }}@users.noreply.github.com'
           git commit -am "style: Applied R# Rider linting"
