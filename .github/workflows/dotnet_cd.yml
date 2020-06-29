@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2.3.1
 
-      - name: Cache
+      - name: Cache NuGet packages
         uses: actions/cache@v2.0.0
         with:
           path: ~/.nuget/packages # Mac/Linux
@@ -48,7 +48,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2.3.1
 
-      - name: Cache
+      - name: Cache NuGet packages
         uses: actions/cache@v2.0.0
         with:
           path: ~/.nuget/packages # Mac/Linux
@@ -60,7 +60,9 @@ jobs:
           dotnet-version: 2.2.x
 
       - name: Get version number & set as env
-        run: echo ::set-env name=VERSION::$( echo ${{ github.event.release.tag_name }} | cut -c 2- )
+        env:
+          TAG_NAME: github.event.release.tag_name
+        run: echo ::set-env name=VERSION::$( echo "$TAG_NAME" | cut -c 2- )
 
       - name: Pack project
         run: dotnet pack --configuration Release -p:PackageVersion=$VERSION
