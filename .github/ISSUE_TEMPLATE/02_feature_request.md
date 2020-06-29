@@ -15,7 +15,7 @@ Please describe the general purpose and value of the feature request or change y
 ## Usage Example
 
 <!--
-Please provide an example scenario that demonstrates the value of the request.
+Please provide an example or scenario that demonstrates the value of the request.
 -->
 
 ## Risks

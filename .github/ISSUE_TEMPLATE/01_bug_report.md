@@ -15,12 +15,6 @@ assignees: "kasperhesthaven"
 * What behavior are you seeing, and what behavior were you expecting?
   -->
 
-### Steps to reproduce
-
-<!--
-* If possible include steps to reproduce the issue.
-  -->
-
 ### Expected results
 
 <!--
@@ -31,6 +25,12 @@ assignees: "kasperhesthaven"
 
 <!--
 * What behavior happened instead?
+  -->
+
+### Steps to reproduce
+
+<!--
+* If possible include steps to reproduce the issue.
   -->
 
 ### Configuration
