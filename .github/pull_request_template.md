@@ -1,3 +1,5 @@
+<!--This is just a template - feel free to delete any and all of it and replace as appropriate.-->
+
 ## Purpose
 
 _Describe the problem or feature in addition to any links to issues._
