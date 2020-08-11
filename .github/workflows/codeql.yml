@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 2
 
       - name: Checkout PR head # instead of merge commit
-      - run: git checkout HEAD^2
+        run: git checkout HEAD^2
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
