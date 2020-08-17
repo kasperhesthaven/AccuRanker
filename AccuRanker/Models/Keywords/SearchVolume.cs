@@ -14,13 +14,13 @@
         public long Id { get; set; }
 
         [JsonProperty("search_volume")]
-        public int SearchVolumeAmount { get; set; }
+        public int? SearchVolumeAmount { get; set; }
 
         [JsonProperty("avg_cost_per_click")]
-        public double AvgCostPerClick { get; set; }
+        public double? AvgCostPerClick { get; set; }
 
         [JsonProperty("competition")]
-        public double Competition { get; set; }
+        public double? Competition { get; set; }
     }
 
     public class SearchVolumeFields : FieldsDescriptor
